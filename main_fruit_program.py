@@ -10,8 +10,16 @@ def get_string(m):
 
 def review(L):
     for i in range(0, len(L)):
-        output = "You have {} {}".format(L[i][0], L[i][1])
+        output = "You have {} {}'s".format(L[i][0], L[i][1])
         print(output)
+
+def add_fruit(L):
+    fruit = get_string("Please enter the fruit you would like to add: -> ")
+    number = get_integer("How many {}'s are you adding? -> ".format(fruit))
+    temp_list = [number, fruit]
+    L.append(temp_list)
+    print("*" * 50)
+    print("You have added {} {}'s to the list".format(number, fruit))
 
 def main():
     print("Main function")
@@ -21,8 +29,10 @@ def main():
         [0, "Apples"],
         [0, "Mangoes"]
     ]
+    base = []
     my_menu = [
         ("A:", "Review"),
+        ("B:", "Add Fruit"),
         ("Q:", "Quit")]
     run = True
     while run == True:
@@ -35,6 +45,11 @@ def main():
             print("*" * 50)
             review(base)
             print("*"*50)
+        elif choice =="B":
+            print("Add Fruit:")
+            print("*" * 50)
+            add_fruit(base)
+            print("*" * 50)
         elif choice =="Q":
             print("*" * 50)
             print("Thank you!")

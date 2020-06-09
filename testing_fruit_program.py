@@ -27,16 +27,6 @@ def single_loop_print(L):
         output = "{:10} --- {:10} --- {:<10}".format(i, L[i][0], L[i][1])
         print(output)
 
-fruit_list = []
-
-def add_fruit():
-
-
-
-
-
-
-
 def adding(a,b):
     my_sum = a+b
     my_string = "{} + {} = {}".format(a,b,my_sum)
@@ -93,10 +83,19 @@ def update_fruit_menu(L):
             print("*" * 50)
         elif choice == "Q":
             print("*" * 50)
-            main()
         else:
             print("Invalid entry ")
 
 
+
+def add_fruit():
+    L = []
+    fruit = get_string("Please enter the fruit you would like to add: -> ")
+    number = get_integer("Please enter the amount of this fruit you have: -> ")
+    temp_list = [fruit, number]
+    L.append(temp_list)
+    print(L)
+
 #review(base)
-update_fruit_menu(base)
+#update_fruit_menu(base)
+add_fruit()
