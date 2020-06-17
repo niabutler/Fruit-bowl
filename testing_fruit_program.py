@@ -7,12 +7,7 @@ def get_string(m):
     my_string = input(m)
     return my_string
 
-base = [
-        [0, "Bananas"],
-        [0, "Oranges"],
-        [0, "Apples"],
-        [0, "Mangoes"]
-    ]
+
 
 def review(L):
     print("*" * 50)
@@ -24,7 +19,7 @@ def review(L):
 
 def single_loop_print(L):
     for i in range(0, len(L)):
-        output = "{:10} --- {:10} --- {:<10}".format(i, L[i][0], L[i][1])
+        output = "{}: {}'s -- {}".format(i, L[i][1], L[i][0])
         print(output)
 
 def adding(a,b):
@@ -47,22 +42,43 @@ def update_name(L):
 def update_fruit_add(L):
     print("Update fruit")
     single_loop_print(L)
-    my_index = get_integer("Please choose a fruit to update: -> ")
+    my_index = get_integer("Please choose the number of the fruit to update: -> ")
     new_amount = get_integer("Please enter the number of this fruit you are adding to the bowl: -> ")
     old_amount = L[my_index][0]
     my_sum = L[my_index][0] + new_amount
+    L[my_index][0] = my_sum
     final_amount = my_sum
-    output = ("The number {} has been changed to {}".format(old_amount, final_amount))
+    output = ("The number of {} has been changed from {} to {}".format(L[my_index][1], old_amount, final_amount))
+    print(output)
+
+def update_fruit_subtract(L):
+    print("Update fruit")
+    single_loop_print(L)
+    my_index = get_integer("Please choose the number of the fruit to update: -> ")
+    new_amount = get_integer("Please enter the number of this fruit you are subtracting from the bowl: -> ")
+    old_amount = L[my_index][0]
+    my_sum = L[my_index][0] - new_amount
+    L[my_index][0] = my_sum
+    final_amount = my_sum
+    output = ("The number of {} has been changed from {} to {}".format(L[my_index][1], old_amount, final_amount))
     print(output)
 
 
-def update_fruit_menu(L):
+def update_fruit_menu():
     my_menu = [
         ("A:", "Add fruit"),
         ("B:", "Subtract fruit"),
         ("C:", "Review"),
         ("Q:", "Quit")
     ]
+
+    base = [
+        [0, "Bananas"],
+        [0, "Oranges"],
+        [0, "Apples"],
+        [0, "Mangoes"]
+    ]
+
     run = True
     while run == True:
         # print main menu
@@ -77,6 +93,7 @@ def update_fruit_menu(L):
         elif choice == "B":
             print("Update Fruit - Subtract fruit:")
             print("*" * 50)
+            update_fruit_subtract(base)
             print("*" * 50)
         elif choice =="C":
             review(base)
@@ -97,5 +114,5 @@ def add_fruit():
     print(L)
 
 #review(base)
-#update_fruit_menu(base)
-add_fruit()
+update_fruit_menu()
+#add_fruit()
